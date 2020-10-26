@@ -89,7 +89,6 @@ function library:Destroy()
 end
 function library:Keybind(key)
     if keybindConnection then keybindConnection:Disconnect() end
-    local key = key:upper()
 
     keybindConnection = uis.InputBegan:Connect(function(input, gp)
         if not gp and input.KeyCode == Enum.KeyCode[key] then

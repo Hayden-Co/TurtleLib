@@ -152,6 +152,11 @@ function library:Window(name)
     Minimise.TextSize = 20.000
     Minimise.MouseButton1Up:connect(function()
         Window.Visible = not Window.Visible
+	if Window.Visible then
+		Minimise.Text = "_"
+	else
+		Minimise.Text = "+"
+	end
     end)
 
     Window.Name = "Window"

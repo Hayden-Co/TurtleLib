@@ -87,6 +87,10 @@ function library:Destroy()
         keybindConnection:Disconnect()
     end
 end
+function library:Hide()
+   TurtleUiLib.Enabled = not TurtleUiLib.Enabled
+end	
+
 function library:Keybind(key)
     if keybindConnection then keybindConnection:Disconnect() end
 

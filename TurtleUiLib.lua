@@ -473,7 +473,7 @@ function library:Window(name)
         Max.ZIndex = 2 + zindex
         pastSliders[winCount] = true
     end
-    function functions:Dropdown(text, buttons, callback)
+    function functions:Dropdown(text, buttons, callback, selective)
         local text = text or "Dropdown"
         local buttons = buttons or {}
         local callback = callback or function() end
@@ -571,6 +571,9 @@ function library:Window(name)
             Button_2.MouseButton1Up:Connect(function()
                 callback(name)
 		DropdownFrame.Visible = false
+		if selective then
+		   Dropdown.Text = name
+		end
             end)
         end
         function dropFunctions:Remove(name)

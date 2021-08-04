@@ -232,6 +232,8 @@ function library:Window(name)
             Label.TextColor3 = color
         end
         pastSliders[winCount] = false
+	
+	return Label
     end
     function functions:Toggle(text, on, callback)
         local callback = callback or function() end
@@ -472,6 +474,16 @@ function library:Window(name)
         Max.TextXAlignment = Enum.TextXAlignment.Right
         Max.ZIndex = 2 + zindex
         pastSliders[winCount] = true
+
+        local slider = {}
+        function slider:SetValue(value)
+	    value = math.clamp(value, min, max)
+            local xOffset = (value-min)/max * (Slider.Size.X.Offset)
+            SliderButton.Position = UDim2.new(0, xOffset , -1.33333337, 0);
+            SilderFiller.Size = UDim2.new(0, xOffset, 0, 6)
+            Current.Text = tostring(math.round(value))
+        end
+        return slider
     end
     function functions:Dropdown(text, buttons, callback, selective)
         local text = text or "Dropdown"

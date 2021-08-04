@@ -475,6 +475,7 @@ function library:Window(name)
 
         local slider = {}
         function slider:SetValue(value)
+	    value = math.clamp(value, min, max)
             local xOffset = (value-min)/max * (Slider.Size.X.Offset-5)
             SliderButton.Position = UDim2.new(0, xOffset , -1.33333337, 0);
             SilderFiller.Size = UDim2.new(0, xOffset, 0, 6)

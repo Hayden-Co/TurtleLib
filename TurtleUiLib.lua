@@ -472,6 +472,15 @@ function library:Window(name)
         Max.TextXAlignment = Enum.TextXAlignment.Right
         Max.ZIndex = 2 + zindex
         pastSliders[winCount] = true
+
+        local slider = {}
+        function slider:SetValue(value)
+            local xOffset = (value-min)/max * (Slider.Size.X.Offset-5)
+            SliderButton.Position = UDim2.new(0, xOffset , -1.33333337, 0);
+            SilderFiller.Size = UDim2.new(0, xOffset, 0, 6)
+            Current.Text = tostring(math.round(value))
+        end
+        return slider
     end
     function functions:Dropdown(text, buttons, callback, selective)
         local text = text or "Dropdown"

@@ -232,6 +232,8 @@ function library:Window(name)
             Label.TextColor3 = color
         end
         pastSliders[winCount] = false
+	
+	return Label
     end
     function functions:Toggle(text, on, callback)
         local callback = callback or function() end
